@@ -28,7 +28,7 @@ public class SecurityConfig {
         UserDetails admin = User.builder()
                 .username("admin")
                 .password(passwordEncoder.encode("admin")) // Encode le mot de passe
-                .roles("ADMIN")
+                .roles("TECHNICIEN")
                 .build();
 
         // Utilisateur avec le rôle USER
