@@ -1,0 +1,48 @@
+<h1 class="page-title">Liste des Tickets</h1>
+
+<!-- Bouton pour créer un nouveau ticket -->
+<div class="actions">
+  <button class="create-button" routerLink="/tickets/new">Créer un Ticket</button>
+</div>
+
+<div *ngIf="userId !== null" class="user-info">
+  <p><strong>Utilisateur ID:</strong> {{ userId }}</p>
+  <p><strong>Nom Utilisateur:</strong> {{ userEmail }}</p>
+  <p><strong>Utilisateur Role:</strong> {{ userRole }}</p>
+</div>
+
+<br>
+
+<table *ngIf="tickets.length > 0" class="ticket-table">
+  <thead>
+  <tr>
+    <th>ID</th>
+    <th>Titre</th>
+    <th>Description</th>
+    <th>Statut</th>
+    <th>Priorité</th>
+    <th>Mise à jour</th>
+    <th>Utilisateur</th>
+    <th *ngIf="userRole === 'TECHNICIEN'">Email Utilisateur</th>
+    <th>Département</th>
+    <th>Actions</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let ticket of tickets">
+    <td>{{ ticket.id }}</td>
+    <td>{{ ticket.titre }}</td>
+    <td>{{ ticket.description }}</td>
+    <td>{{ ticket.statut }}</td>
+    <td>{{ ticket.priorite }}</td>
+    <td>{{ ticket.dateMiseAJour | date: 'yyyy-MM-dd HH:mm:ss' }}</td>
+    <td>{{ ticket.utilisateurNom }}</td>
+    <td *ngIf="userRole === 'TECHNICIEN'">{{ ticket.utilisateurEmail }}</td>
+    <td>{{ ticket.departementNom }}</td>
+    <td>
+      <button (click)="editTicket(ticket.id)" class="edit-button">Modifier</button>
+      <button (click)="deleteTicket(ticket.id)" class="delete-button">Supprimer</button>
+    </td>
+  </tr>
+  </tbody>
+</table>

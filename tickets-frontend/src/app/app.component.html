@@ -1,0 +1,21 @@
+<div class="navbar">
+  <div class="logo">
+    <h2>Logo</h2>
+  </div>
+  <div class="nav-links">
+    <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Accueil</a>
+    <a routerLink="/tickets" routerLinkActive="active">Tickets</a>
+
+    <!-- Conditionally show the departments and users links based on the user role -->
+    <a *ngIf="userRole === 'TECHNICIEN'" routerLink="/departments" routerLinkActive="active">Départements</a>
+    <a *ngIf="userRole === 'TECHNICIEN'" routerLink="/utilisateur" routerLinkActive="active">Utilisateurs</a>
+  </div>
+  <div class="logout">
+    <button (click)="logout()" class="btn btn-danger">Déconnexion</button>
+  </div>
+</div>
+
+<!-- Zone principale -->
+<div class="main-content">
+  <router-outlet></router-outlet>
+</div>

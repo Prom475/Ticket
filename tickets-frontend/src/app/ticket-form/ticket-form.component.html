@@ -1,0 +1,62 @@
+<!-- ticket-form.component.html -->
+<div class="container mt-5">
+  <h2 class="text-center mb-4">Formulaire de Ticket</h2>
+
+  <form #form="ngForm" (ngSubmit)="saveTicket(form)" novalidate>
+
+    <!-- Titre -->
+    <div class="form-group">
+      <label for="titre">Titre</label>
+      <input type="text" id="titre" [(ngModel)]="ticket['titre']" name="titre" class="form-control" placeholder="Entrez le titre" required />
+      <div *ngIf="form.submitted && form.controls['titre']?.invalid" class="invalid-feedback">
+        Le titre est requis.
+      </div>
+    </div>
+
+    <!-- Description -->
+    <div class="form-group">
+      <label for="description">Description</label>
+      <textarea id="description" [(ngModel)]="ticket['description']" name="description" class="form-control" rows="4" placeholder="Entrez la description" required></textarea>
+      <div *ngIf="form.submitted && form.controls['description']?.invalid" class="invalid-feedback">
+        La description est requise.
+      </div>
+    </div>
+
+    <!-- Statut -->
+    <div class="form-group">
+      <label for="statut">Statut</label>
+      <input type="text" id="statut" [(ngModel)]="ticket['statut']" name="statut" class="form-control" placeholder="Entrez le statut" required />
+      <div *ngIf="form.submitted && form.controls['statut']?.invalid" class="invalid-feedback">
+        Le statut est requis.
+      </div>
+    </div>
+
+    <!-- Champ Département -->
+    <div class="form-group">
+      <label for="departement">Département</label>
+      <select id="departement" [(ngModel)]="ticket.departementId" name="departement" class="form-control" required>
+        <option *ngFor="let departement of departements" [value]="departement.id">
+          {{ departement.nom }}
+        </option>
+      </select>
+      <div *ngIf="form.submitted && form.controls['departement']?.invalid" class="invalid-feedback">
+        Veuillez sélectionner un département.
+      </div>
+    </div>
+
+
+
+    <!-- Priorité -->
+    <div class="form-group">
+      <label for="priorite">Priorité</label>
+      <input type="text" id="priorite" [(ngModel)]="ticket['priorite']" name="priorite" class="form-control" placeholder="Entrez la priorité" required />
+      <div *ngIf="form.submitted && form.controls['priorite']?.invalid" class="invalid-feedback">
+        La priorité est requise.
+      </div>
+    </div>
+    <br>
+
+    <!-- Submit Button -->
+    <button type="submit" class="btn btn-primary btn-block">Enregistrer</button>
+  </form>
+</div>

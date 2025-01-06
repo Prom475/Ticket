@@ -1,0 +1,22 @@
+body {
+  background-color: #f8f9fa; /* Background light gray for the page */
+}
+
+.container {
+  max-width: 600px; /* Set a maximum width for the form container */
+}
+
+h2 {
+  color: #007bff; /* Blue color for the form title */
+}
+
+.invalid-feedback {
+  display: block; /* Ensure error messages are visible */
+}
+
+.btn-primary {
+  border-radius: 4px; /* Rounded corners for the button */
+  padding: 10px 20px; /* Button padding */
+  font-size: 16px;
+}
+
